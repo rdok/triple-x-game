@@ -9,9 +9,11 @@
 
 You hurry up, and move into the data center room. Your heart is racing, and the 
 adrenaline is racing through your veins. Some of the machines in front you have 
-USB socks. Taking out dev machine, you plug it in. 
+USB socks. Taking out your dev machine from your backpack, it takes you a couple
+of tries to plug it in; your hand is trembling from the stress. Finally, with 
+your trusty Arch Linux OS, you're ready.
 
-You start your hacking script ./hack.sh:
+You start your hacking script ./hack.sh, and get into the zone:
 
 - There are three numbers in the code
 - The codes multiply to give 18
