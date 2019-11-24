@@ -9,7 +9,7 @@
 
 You hurry up, and move into the data center room. Your heart is racing, and the 
 adrenaline is racing through your veins. Some of the machines in front you have 
-USB socks. Taking out your dev machine from your backpack, it takes you a couple
+USB sockets. Taking out your dev machine from your backpack, it takes you a couple
 of tries to plug it in; your hand is trembling from the stress. Finally, with 
 your trusty Arch Linux OS, you're ready.
 
@@ -39,3 +39,6 @@ closer to find you.
 
 
 
+### Dev
+[Compile & Execute: Ctrl+Shift+B](https://code.visualstudio.com/docs/cpp/config-msvc#_configure-the-compiler-path)
+[Debug: F5](https://code.visualstudio.com/docs/cpp/config-msvc#_configure-debug-settings)

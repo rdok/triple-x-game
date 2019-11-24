@@ -1,0 +1,2 @@
+- [So, what do you think main() does?](https://community.gamedev.tv/t/so-what-do-you-think-main-does/102037/268?u=rdok)
+    - TODO: When completing the project, come back, and see the progress.
