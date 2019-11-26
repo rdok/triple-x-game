@@ -2,6 +2,7 @@
 
 int main()
 {
+    // TODO: Find a better name
     std::cout << "Entering TripleX\n";
     std::cout << "================\n";
 
@@ -11,21 +12,27 @@ int main()
               << std::endl;
     std::cout << "Some of the machines in front you have USB sockets.\n";
     std::cout << "Taking out your dev machine from your backpack, it takes you"
-                 " a couple of tries to plug it in; your hand is trembling from"
-                 "the stress.\n";
+                 " a couple of tries to plug it in; your hand is trembling "
+                 "from the stress.\n";
     std::cout << "Finally, with your trusty Arch Linux OS, you're ready.\n\n";
 
-    int firstNumber = 5;
-    int secondNumber = 10;
-    int thirdNumber = 20;
-    const int sum = firstNumber + secondNumber + thirdNumber;
-    const int product = firstNumber * secondNumber * thirdNumber;
+    /**
+     * TODO: refactor to more intent revealing names. first/second/third
+     * are too generic.
+     */
+    int FirstCode = 5;
+    int SecondCode = 10;
+    int ThirdCode = 20;
+    const int CodeSum = FirstCode + SecondCode + ThirdCode;
+    const int CodeProduct = FirstCode * SecondCode * ThirdCode;
+    int PlayerGuess;
 
-    std::cout << "First number: " << firstNumber << "\n";
-    std::cout << "Second number: " << secondNumber << "\n";
-    std::cout << "Third number: " << thirdNumber << "\n";
-    std::cout << "Sum: " << sum << "\n";
-    std::cout << "Product: " << product << "\n";
+    std::cout << "Code Review\n";
+    std::cout << "===========\n";
+    std::cout << "✖ There are 3 numbers in the code\n";
+    std::cout << "✖ They add up to: " << CodeSum << "\n";
+    std::cout << "✖ The codes multiply to: " << CodeProduct << "\n";
+
 
     return 0;
 }
