@@ -1,3 +1,8 @@
+# TripleX
+
+
+[![Build Status](https://jenkins.rdok.dev/buildStatus/icon?job=triple-x-game%2Fci)](https://jenkins.rdok.dev/view/Training/job/triple-x-game/job/ci/)
+
 ### High Specs
 - Simple number puzzle game
 - Hacking into a computer lock
