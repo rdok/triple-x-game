@@ -7,6 +7,7 @@ pipeline {
             steps {
                 ansiColor('xterm') {
                     sh '''#!/bin/bash
+                        chmod +x ./worbench.sh
                         ./worbench.sh g++ TripleX.cpp -o TripleX.out
                     '''
                 }
