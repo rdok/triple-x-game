@@ -40,7 +40,4 @@ closer to find you.
 
 
 ### Dev
-[Compile & Execute: Ctrl+Shift+B](https://code.visualstudio.com/docs/cpp/config-msvc#_configure-the-compiler-path)
-[Debug: F5](https://code.visualstudio.com/docs/cpp/config-msvc#_configure-debug-settings)
-
-Alternatively to compile & execute in one go `cl TripleX.cpp ; clear; ./TripleX.exe`
+Using git bash`./exec.sh`
