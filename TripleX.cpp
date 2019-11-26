@@ -18,8 +18,8 @@ int main()
     int firstNumber = 5;
     int secondNumber = 10;
     int thirdNumber = 20;
-    int sum = firstNumber + secondNumber + thirdNumber;
-    int product = firstNumber * secondNumber * thirdNumber;
+    const int sum = firstNumber + secondNumber + thirdNumber;
+    const int product = firstNumber * secondNumber * thirdNumber;
 
     std::cout << "First number: " << firstNumber << "\n";
     std::cout << "Second number: " << secondNumber << "\n";

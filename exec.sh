@@ -1,8 +1,10 @@
 #!/bin/bash
 
 echo 'Building...'
-./worbench.sh g++ TripleX.cpp -o TripleX.out
+response=$(./worbench.sh g++ TripleX.cpp -o TripleX.out)
 
-echo 'Executing...'
-clear
-./worbench.sh ./TripleX.out 
+if [ ! -z "${response}" ]; then
+    echo 'Executing...';
+    # clear
+    ./worbench.sh ./TripleX.out 
+fi
