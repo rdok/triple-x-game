@@ -19,7 +19,7 @@ pipeline {
                     sh '''#!/bin/bash
                         ./worbench.sh ./TripleX.out | \
                             grep -q 'Entering TripleX' \
-                            || echo "Failed asserting 'Entering TripleX'." >&2 && exit 1
+                            || ( echo "Failed asserting 'Entering TripleX'." >&2 && exit 1 )
                     '''
                 }
             }

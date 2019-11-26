@@ -1,7 +1,10 @@
 # TripleX
 
+[![Build Status](https://jenkins.rdok.dev/buildStatus/icon?job=triple-x-game)](https://jenkins.rdok.dev/view/Training/job/triple-x-game/)
 
-[![Build Status](https://jenkins.rdok.dev/buildStatus/icon?job=triple-x-game%2Fci)](https://jenkins.rdok.dev/view/Training/job/triple-x-game/job/ci/)
+### Dev
+Using git bash`./exec.sh`
+
 
 ### High Specs
 - Simple number puzzle game
@@ -42,7 +45,3 @@ closer to find you.
 
 > Continue next strong iteration.
 
-
-
-### Dev
-Using git bash`./exec.sh`

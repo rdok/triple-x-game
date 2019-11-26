@@ -2,7 +2,7 @@
 
 int main()
 {
-    std::cout << "\n";
+    std::cout << "Entering TripleX\n";
     std::cout << "================\n";
 
     std::cout << "You hurry up, and move into the data center room.\n";
