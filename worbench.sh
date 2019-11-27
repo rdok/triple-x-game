@@ -1,3 +1,9 @@
 #!/bin/bash
 
-docker run --rm -it -v "/${PWD}":"/app/" -w "//app" gcc:9 "$@"
+opts=( )
+
+if ! [ "$ENV" = "CI" ]; then
+    opts+=( "-it" )
+fi
+
+docker run --rm "${opts[@]}" -v "/${PWD}":"/app/" -w "//app" gcc:9 "$@"

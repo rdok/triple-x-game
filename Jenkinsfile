@@ -2,6 +2,9 @@ pipeline {
     agent { label 'linux' }
     triggers { cron('H H(18-19) * * *') }
     options { buildDiscarder( logRotator( numToKeepStr: '5' ) ) }
+    environment {
+        ENV = 'CI'
+    }
     stages {
         stage('Compile') {
             steps {
