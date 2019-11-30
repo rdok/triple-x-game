@@ -46,7 +46,7 @@ void PrintValidResponseMessage()
 )"
               << "\n";
 
-    std::cout << "OK, that worked. You list all volumes available.";
+    std::cout << "OK, that worked. You list all volumes available.\n\n";
 }
 
 void PrintInValidResponseMessage()
@@ -79,7 +79,7 @@ void PrintInValidResponseMessage()
 ███████████████▓▓▓██▓▓╬╬╬╬╬╬▓███████████
 )"
               << "\n";
-    std::cout << "That didn't work. You decide to give it another go.";
+    std::cout << "That didn't work. You decide to give it another go.\n\n";
 }
 
 void PlayGame()
@@ -103,23 +103,30 @@ void PlayGame()
     std::cout << "Sum: " << PlayerResponseSum << "\n\n";
 }
 
-void CheckProgress()
+bool CheckProgress()
 {
     bool PlayerResponseIsValid = PlayerResponseProduct == CodeProduct;
 
     PlayerResponseIsValid &= PlayerResponseSum == CodeSum;
 
-    PlayerResponseIsValid
-        ? PrintValidResponseMessage()
-        : PrintInValidResponseMessage();
+    if (PlayerResponseIsValid)
+    {
+        PrintValidResponseMessage();
+        return true;
+    }
+
+    PrintInValidResponseMessage();
+    return false;
 }
+
 int main()
 {
     IntroduceStory();
 
-    PlayGame();
-
-    CheckProgress();
+    do
+    {
+        PlayGame();
+    } while (!CheckProgress());
 
     return 0;
 }
