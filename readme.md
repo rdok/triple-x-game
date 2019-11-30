@@ -5,6 +5,8 @@
 ### Dev
 Using git bash`./exec.sh`
 
+![social-preview](./social-preview.jpg "Social Preview")
+
 
 ### High Specs
 - Simple number puzzle game
