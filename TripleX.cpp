@@ -4,15 +4,15 @@
      * TODO: refactor to more intent revealing names. first/second/third
      * are too generic.
      */
-int FirstCode = 5;
-int SecondCode = 10;
-int ThirdCode = 20;
+int FirstCode = 2;
+int SecondCode = 3;
+int ThirdCode = 4;
 const int CodeSum = FirstCode + SecondCode + ThirdCode;
 const int CodeProduct = FirstCode * SecondCode * ThirdCode;
 int PlayerResponse1, PlayerResponse2, PlayerResponse3, PlayerResponseSum,
     PlayerResponseProduct;
 
-char printStory()
+void IntroduceStory()
 {
     // TODO: Find a better name
     std::cout << "Entering TripleX\n";
@@ -29,24 +29,69 @@ char printStory()
     std::cout << "Finally, with your trusty Arch Linux OS, you're ready.\n\n";
 }
 
-int main()
+void PrintValidResponseMessage()
 {
-    printStory();
+    std::cout << R"(
+ ______________
+||            ||
+||            ||
+||            ||
+||            ||
+||____________||
+|______________|
+ \\############\\
+  \\############\\
+   \      ____    \   
+    \_____\___\____\
+)"
+              << "\n";
 
+    std::cout << "OK, that worked. You list all volumes available.";
+}
+
+void PrintInValidResponseMessage()
+{
+    std::cout << R"(
+███████▓█████▓▓╬╬╬╬╬╬╬╬▓███▓╬╬╬╬╬╬╬▓╬╬▓█
+████▓▓▓▓╬╬▓█████╬╬╬╬╬╬███▓╬╬╬╬╬╬╬╬╬╬╬╬╬█
+███▓▓▓▓╬╬╬╬╬╬▓██╬╬╬╬╬╬▓▓╬╬╬╬╬╬╬╬╬╬╬╬╬╬▓█
+████▓▓▓╬╬╬╬╬╬╬▓█▓╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬▓█
+███▓█▓███████▓▓███▓╬╬╬╬╬╬▓███████▓╬╬╬╬▓█
+████████████████▓█▓╬╬╬╬╬▓▓▓▓▓▓▓▓╬╬╬╬╬╬╬█
+███▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬▓█
+████▓▓▓▓▓▓▓▓▓▓▓▓▓█▓╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬▓█
+███▓█▓▓▓▓▓▓▓▓▓▓▓▓▓▓╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬▓█
+█████▓▓▓▓▓▓▓▓█▓▓▓█▓╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬▓█
+█████▓▓▓▓▓▓▓██▓▓▓█▓╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬██
+█████▓▓▓▓▓████▓▓▓█▓╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬██
+████▓█▓▓▓▓██▓▓▓▓██╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬██
+████▓▓███▓▓▓▓▓▓▓██▓╬╬╬╬╬╬╬╬╬╬╬╬█▓╬▓╬╬▓██
+█████▓███▓▓▓▓▓▓▓▓████▓▓╬╬╬╬╬╬╬█▓╬╬╬╬╬▓██
+█████▓▓█▓███▓▓▓████╬▓█▓▓╬╬╬▓▓█▓╬╬╬╬╬╬███
+██████▓██▓███████▓╬╬╬▓▓╬▓▓██▓╬╬╬╬╬╬╬▓███
+███████▓██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓╬╬╬╬╬╬╬╬╬╬╬████
+███████▓▓██▓▓▓▓▓╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬▓████
+████████▓▓▓█████▓▓╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬▓█████
+█████████▓▓▓█▓▓▓▓▓███▓╬╬╬╬╬╬╬╬╬╬╬▓██████
+██████████▓▓▓█▓▓▓▓▓██╬╬╬╬╬╬╬╬╬╬╬▓███████
+███████████▓▓█▓▓▓▓███▓╬╬╬╬╬╬╬╬╬▓████████
+██████████████▓▓▓███▓▓╬╬╬╬╬╬╬╬██████████
+███████████████▓▓▓██▓▓╬╬╬╬╬╬▓███████████
+)"
+              << "\n";
+    std::cout << "That didn't work. You decide to give it another go.";
+}
+
+void PlayGame()
+{
     std::cout << "Code Review\n";
     std::cout << "===========\n";
     std::cout << "✖ There are 3 numbers in the code\n";
     std::cout << "✖ They add up to: " << CodeSum << "\n";
     std::cout << "✖ The codes multiply to: " << CodeProduct << "\n\n";
 
-    std::cout << "Enter first code:\n";
-    std::cin >> PlayerResponse1;
-
-    std::cout << "Enter second code:\n";
-    std::cin >> PlayerResponse2;
-
-    std::cout << "Enter third code:\n";
-    std::cin >> PlayerResponse3;
+    std::cout << "Enter the three codes:\n";
+    std::cin >> PlayerResponse1 >> PlayerResponse2 >> PlayerResponse3;
 
     std::cout << "You responded with: " << PlayerResponse1 << ", ";
     std::cout << PlayerResponse2 << ", and " << PlayerResponse3 << "\n\n";
@@ -55,7 +100,26 @@ int main()
     PlayerResponseSum = PlayerResponse1 + PlayerResponse2 + PlayerResponse3;
 
     std::cout << "Product: " << PlayerResponseProduct << "\n";
-    std::cout << "Sum: " << PlayerResponseSum << "\n";
+    std::cout << "Sum: " << PlayerResponseSum << "\n\n";
+}
+
+void CheckProgress()
+{
+    bool PlayerResponseIsValid = PlayerResponseProduct == CodeProduct;
+
+    PlayerResponseIsValid &= PlayerResponseSum == CodeSum;
+
+    PlayerResponseIsValid
+        ? PrintValidResponseMessage()
+        : PrintInValidResponseMessage();
+}
+int main()
+{
+    IntroduceStory();
+
+    PlayGame();
+
+    CheckProgress();
 
     return 0;
 }
