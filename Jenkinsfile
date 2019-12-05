@@ -1,5 +1,6 @@
 pipeline {
     agent { label 'linux' }
+    triggers { cron('H H(18-19) * * *') }
     options { buildDiscarder( logRotator( numToKeepStr: '5' ) ) }
     environment {
         ENV = 'CI'
@@ -9,8 +10,8 @@ pipeline {
             steps {
                 ansiColor('xterm') {
                     sh '''#!/bin/bash
-                        chmod +x ./worbench.sh
-                        ./worbench.sh g++ TripleX.cpp -o TripleX.out
+                        chmod +x ./workbench.sh
+                        ./workbench.sh g++ TripleX.cpp -o TripleX.out
                     '''
                 }
             }
@@ -19,9 +20,18 @@ pipeline {
             steps {
                 ansiColor('xterm') {
                     sh '''#!/bin/bash
-                        ./worbench.sh ./TripleX.out | \
+                        ./workbench.sh ./TripleX.out | \
                             grep -q 'Entering TripleX' \
                             || ( echo "Failed asserting 'Entering TripleX'." >&2 && exit 1 )
+                    '''
+                }
+            }
+        }
+        stage('Clean up') {
+            steps {
+                ansiColor('xterm') {
+                    sh '''#!/bin/bash
+                        docker kill tripple-x-workbench
                     '''
                 }
             }

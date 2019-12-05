@@ -3,8 +3,8 @@
 set -e
 
 echo 'Building...'
-response=$(./worbench.sh g++ TripleX.cpp -o TripleX.out)
+./workbench.sh g++ TripleX.cpp -o TripleX.out
 
+# clear
 echo 'Executing...';
-clear
-./worbench.sh ./TripleX.out 
+./workbench.sh ./TripleX.out

@@ -12,6 +12,7 @@ const int CodeProduct = FirstCode * SecondCode * ThirdCode;
 int PlayerResponse1, PlayerResponse2, PlayerResponse3, PlayerResponseSum,
     PlayerResponseProduct;
 
+
 void IntroduceStory()
 {
     // TODO: Find a better name
@@ -41,7 +42,7 @@ void PrintValidResponseMessage()
 |______________|
  \\############\\
   \\############\\
-   \      ____    \   
+   \      ____    \
     \_____\___\____\
 )"
               << "\n";
@@ -82,28 +83,7 @@ void PrintInValidResponseMessage()
     std::cout << "That didn't work. You decide to give it another go.\n\n";
 }
 
-void PlayGame()
-{
-    std::cout << "Code Review\n";
-    std::cout << "===========\n";
-    std::cout << "✖ There are 3 numbers in the code\n";
-    std::cout << "✖ They add up to: " << CodeSum << "\n";
-    std::cout << "✖ The codes multiply to: " << CodeProduct << "\n\n";
-
-    std::cout << "Enter the three codes:\n";
-    std::cin >> PlayerResponse1 >> PlayerResponse2 >> PlayerResponse3;
-
-    std::cout << "You responded with: " << PlayerResponse1 << ", ";
-    std::cout << PlayerResponse2 << ", and " << PlayerResponse3 << "\n\n";
-
-    PlayerResponseProduct = PlayerResponse1 * PlayerResponse2 * PlayerResponse3;
-    PlayerResponseSum = PlayerResponse1 + PlayerResponse2 + PlayerResponse3;
-
-    std::cout << "Product: " << PlayerResponseProduct << "\n";
-    std::cout << "Sum: " << PlayerResponseSum << "\n\n";
-}
-
-bool CheckProgress()
+bool CheckCode()
 {
     bool PlayerResponseIsValid = PlayerResponseProduct == CodeProduct;
 
@@ -119,14 +99,42 @@ bool CheckProgress()
     return false;
 }
 
+
+bool AttemptCodeHack()
+{
+    std::cout << "Code Review\n";
+    std::cout << "===========\n";
+    std::cout << "✖ There are 3 numbers in the code\n";
+    std::cout << "✖ They add up to: " << CodeSum << "\n";
+    std::cout << "✖ The codes multiply to: " << CodeProduct << "\n\n";
+
+    std::cout << "Enter the three codes:\n";
+    std::cin >> PlayerResponse1 >> PlayerResponse2 >> PlayerResponse3;
+    std::cout << "You responded with: " << PlayerResponse1 << ", ";
+    std::cout << PlayerResponse2 << ", and " << PlayerResponse3 << "\n\n";
+
+    PlayerResponseProduct = PlayerResponse1 * PlayerResponse2 * PlayerResponse3;
+    PlayerResponseSum = PlayerResponse1 + PlayerResponse2 + PlayerResponse3;
+
+    std::cout << "Product: " << PlayerResponseProduct << "\n";
+    std::cout << "Sum: " << PlayerResponseSum << "\n\n";
+
+    return CheckCode();
+}
+
 int main()
 {
     IntroduceStory();
 
-    do
+    bool bCodeHacked = AttemptCodeHack();
+
+    while (!bCodeHacked)
     {
-        PlayGame();
-    } while (!CheckProgress());
+        bCodeHacked = AttemptCodeHack();
+
+        std::cin.clear();
+        std::cin.ignore();
+    }
 
     return 0;
 }
