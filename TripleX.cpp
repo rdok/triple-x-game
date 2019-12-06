@@ -1,21 +1,10 @@
 #include <iostream>
 
-/**
-     * TODO: refactor to more intent revealing names. first/second/third
-     * are too generic.
-     */
-int FirstCode = 2;
-int SecondCode = 3;
-int ThirdCode = 4;
-const int CodeSum = FirstCode + SecondCode + ThirdCode;
-const int CodeProduct = FirstCode * SecondCode * ThirdCode;
-int PlayerResponse1, PlayerResponse2, PlayerResponse3, PlayerResponseSum,
-    PlayerResponseProduct;
-
+int FirstCode, SecondCode, ThirdCode, CodeSum, CodeProduct, PlayerResponse1,
+    PlayerResponse2, PlayerResponse3, PlayerResponseSum, PlayerResponseProduct;
 
 void IntroduceStory()
 {
-    // TODO: Find a better name
     std::cout << "Entering TripleX\n";
     std::cout << "================\n";
 
@@ -30,9 +19,11 @@ void IntroduceStory()
     std::cout << "Finally, with your trusty Arch Linux OS, you're ready.\n\n";
 }
 
-void PrintValidResponseMessage()
+void PrintValidResponseMessage(int Difficulty)
 {
-    std::cout << R"(
+    if (Difficulty == 1)
+    {
+        std::cout << R"(
  ______________
 ||            ||
 ||            ||
@@ -45,9 +36,79 @@ void PrintValidResponseMessage()
    \      ____    \
     \_____\___\____\
 )"
-              << "\n";
+                  << "\n";
 
-    std::cout << "OK, that worked. You list all volumes available.\n\n";
+        std::cout << "OK, that worked. You list all volumes available.\n\n";
+        return;
+    }
+
+    if(Difficulty == 2) {
+        std::cout << R"(
+Fight Bugs                      |     |
+                                \\_V_//
+                                \/=|=\/
+                                 [=v=]
+                               __\___/_____
+                              /..[  _____  ]
+                             /_  [ [  M /] ]
+                            /../.[ [ M /@] ]
+                           <-->[_[ [M /@/] ]
+                          /../ [.[ [ /@/ ] ]
+     _________________]\ /__/  [_[ [/@/ C] ]
+    <_________________>>0---]  [=\ \@/ C / /
+       ___      ___   ]/000o   /__\ \ C / /
+          \    /              /....\ \_/ /
+       ....\||/....           [___/=\___/
+      .    .  .    .          [...] [...]
+     .      ..      .         [___/ \___]
+     .    0 .. 0    .         <---> <--->
+  /\/\.    .  .    ./\/\      [..]   [..]
+ / / / .../|  |\... \ \ \    _[__]   [__]_
+/ / /       \/       \ \ \  [____>   <____]
+)"
+                  << "\n";
+
+        std::cout << "Hmm, you found a bug in your script. With that fixed you break to the next layer.\n";
+        return;
+    }
+
+{
+        std::cout << R"(
+                    ____
+                 _.' :  `._
+             .-.'`.  ;   .'`.-.
+    __      / : ___\ ;  /___ ; \      __
+  ,'_ ""--.:__;".-.";: :".-.":__;.--"" _`,
+  :' `.t""--.. '<@.`;_  ',@>` ..--""j.' `;
+       `:-.._J '-.-'L__ `-- ' L_..-;'
+         "-.__ ;  .-"  "-.  : __.-"
+             L ' /.------.\ ' J
+              "-.   "--"   .-"
+             __.l"-:_JL_;-";.__
+          .-j/'.;  ;""""  / .'\"-.
+        .' /:`. "-.:     .-" .';  `.
+     .-"  / ;  "-. "-..-" .-"  :    "-.
+  .+"-.  : :      "-.__.-"      ;-._   \
+  ; \  `.; ;                    : : "+. ;
+  :  ;   ; ;                    : ;  : \:
+ : `."-; ;  ;                  :  ;   ,/;
+  ;    -: ;  :                ;  : .-"'  :
+  :\     \  : ;             : \.-"      :
+   ;`.    \  ; :            ;.'_..--  / ;
+   :  "-.  "-:  ;          :/."      .'  :
+     \       .-`.\        /t-""  ":-+.   :
+      `.  .-"    `l    __/ /`. :  ; ; \  ;
+        \   .-" .-"-.-"  .' .'j \  /   ;/
+         \ / .-"   /.     .'.' ;_:'    ;
+          :-""-.`./-.'     /    `.___.'
+                \ `t  ._  /  bug :F_P:
+                 "-.t-._:'
+)"
+                  << "\n";
+
+        std::cout << "OK, that worked. You mount the volume to your machine, and start copying it's data.";
+        return;
+    }
 }
 
 void PrintInValidResponseMessage()
@@ -83,7 +144,7 @@ void PrintInValidResponseMessage()
     std::cout << "That didn't work. You decide to give it another go.\n\n";
 }
 
-bool CheckCode()
+bool CheckCode(int Difficulty)
 {
     bool PlayerResponseIsValid = PlayerResponseProduct == CodeProduct;
 
@@ -91,7 +152,7 @@ bool CheckCode()
 
     if (PlayerResponseIsValid)
     {
-        PrintValidResponseMessage();
+        PrintValidResponseMessage(Difficulty);
         return true;
     }
 
@@ -99,8 +160,7 @@ bool CheckCode()
     return false;
 }
 
-
-bool AttemptCodeHack()
+bool AttemptCodeHack(int Difficulty)
 {
     std::cout << "Code Review\n";
     std::cout << "===========\n";
@@ -119,18 +179,30 @@ bool AttemptCodeHack()
     std::cout << "Product: " << PlayerResponseProduct << "\n";
     std::cout << "Sum: " << PlayerResponseSum << "\n\n";
 
-    return CheckCode();
+    return CheckCode(Difficulty);
+}
+
+void generateMatrix(int Difficulty)
+{
+    FirstCode = rand() % (Difficulty * 2) + 1;
+    SecondCode = rand() % (Difficulty * 2) + 1;
+    ThirdCode = rand() % (Difficulty * 2) + 1;
+    CodeSum = FirstCode + SecondCode + ThirdCode;
+    CodeProduct = FirstCode * SecondCode * ThirdCode;
 }
 
 int main()
 {
     IntroduceStory();
+    int MaxDifficulty = 3;
+    int Difficulty = 1;
 
-    bool bCodeHacked = AttemptCodeHack();
-
-    while (!bCodeHacked)
+    while (Difficulty <= MaxDifficulty)
     {
-        bCodeHacked = AttemptCodeHack();
+        generateMatrix(Difficulty);
+
+        if (AttemptCodeHack(Difficulty))
+            Difficulty++;
 
         std::cin.clear();
         std::cin.ignore();
