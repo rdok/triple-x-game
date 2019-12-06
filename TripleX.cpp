@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 
 int FirstCode, SecondCode, ThirdCode, CodeSum, CodeProduct, PlayerResponse1,
     PlayerResponse2, PlayerResponse3, PlayerResponseSum, PlayerResponseProduct;
@@ -42,7 +43,8 @@ void PrintValidResponseMessage(int Difficulty)
         return;
     }
 
-    if(Difficulty == 2) {
+    if (Difficulty == 2)
+    {
         std::cout << R"(
 Fight Bugs                      |     |
                                 \\_V_//
@@ -72,7 +74,7 @@ Fight Bugs                      |     |
         return;
     }
 
-{
+    {
         std::cout << R"(
                     ____
                  _.' :  `._
@@ -184,18 +186,20 @@ bool AttemptCodeHack(int Difficulty)
 
 void generateMatrix(int Difficulty)
 {
-    FirstCode = rand() % (Difficulty * 2) + 1;
-    SecondCode = rand() % (Difficulty * 2) + 1;
-    ThirdCode = rand() % (Difficulty * 2) + 1;
+    FirstCode = rand() % Difficulty + Difficulty;
+    SecondCode = rand() % Difficulty + Difficulty;
+    ThirdCode = rand() % Difficulty + Difficulty;
     CodeSum = FirstCode + SecondCode + ThirdCode;
     CodeProduct = FirstCode * SecondCode * ThirdCode;
 }
 
 int main()
 {
-    IntroduceStory();
+    srand(time(NULL));
     int MaxDifficulty = 3;
     int Difficulty = 1;
+
+    IntroduceStory();
 
     while (Difficulty <= MaxDifficulty)
     {
