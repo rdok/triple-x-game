@@ -1,0 +1,25 @@
+name: Test
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: sam validate
+      - name: Compile
+        run: |
+           chmod +x ./workbench.sh
+           ./workbench.sh g++ TripleX.cpp -o TripleX.out
+      - name: Run & Test
+        run: |
+          ./workbench.sh ./TripleX.out | \
+            grep -q 'Entering TripleX' \
+            || ( echo "Failed asserting 'Entering TripleX'." >&2 && exit 1 )
+                  - name: Run & Test
+      - name: Cleanup
+        run:  docker kill tripple-x-workbench
+
