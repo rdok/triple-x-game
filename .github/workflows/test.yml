@@ -21,7 +21,6 @@ jobs:
           ./workbench.sh ./TripleX.out | \
             grep -q 'Entering TripleX' \
             || ( echo "Failed asserting 'Entering TripleX'." >&2 && exit 1 )
-                  - name: Run & Test
       - name: Cleanup
         run:  docker kill tripple-x-workbench
 
