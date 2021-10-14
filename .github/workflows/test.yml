@@ -5,11 +5,10 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: sam validate
       - name: Compile
         run: |
            chmod +x ./workbench.sh
