@@ -2,9 +2,9 @@
 
 [![Build Status](https://jenkins.rdok.dev/buildStatus/icon?job=triple-x-game)](https://jenkins.rdok.dev/view/Training/job/triple-x-game/)
 
-### Dev
+### Development
 Prerequisite: [Docker](https://www.docker.com/)  
-Git bash `./exec.sh`
+Windows - Git bash `./exec.sh`
 
 ![social-preview](./social-preview.jpg "Social Preview")
 
