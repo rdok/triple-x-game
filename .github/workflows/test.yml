@@ -1,7 +1,7 @@
 name: Test
 
 env:
-  CI: true
+  ENV: 'CI'
 
 on:
   pull_request:
