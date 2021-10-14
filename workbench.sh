@@ -7,6 +7,7 @@ if ! [ "$ENV" = "CI" ]; then
 fi
 
 docker run \
+    -T \
     --rm \
     --name tripple-x-workbench \
     "${opts[@]}" \
