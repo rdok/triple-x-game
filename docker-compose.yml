@@ -2,16 +2,16 @@ version: "3.9"
 services:
 
   start:
-    image: gcc:9
+    image: rdok/gpp:alpine3.12
     volumes: [ .:/app ]
     working_dir: /app
     command: >
-      bash -c "
+      sh -c "
       g++ TripleX.cpp -o TripleX.out
       && ./TripleX.out"
 
   compile:
-    image: gcc:9
+    image: rdok/gpp:alpine3.12
     volumes: [ .:/app ]
     working_dir: /app
-    command: bash -c "g++ TripleX.cpp -o TripleX.out"
+    command: sh -c "g++ TripleX.cpp -o TripleX.out"
