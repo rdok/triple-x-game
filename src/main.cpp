@@ -18,8 +18,9 @@ int main() {
 
     while (difficulty <= max_difficulty) {
         std::tie(matrix_sum, matrix_product) = generateMatrix(difficulty);
-        std::tie(alpha_code, beta_code, gamma_code) = PromptHack(matrix_sum, matrix_product);
+        PromptHack(matrix_sum, matrix_product);
 
+        std::tie(alpha_code, beta_code, gamma_code) = GetPlayerHack();
         has_valid_hack_attempt = HasValidHackAttempt(alpha_code, beta_code, gamma_code, matrix_sum, matrix_product);
 
         if (has_valid_hack_attempt) {
