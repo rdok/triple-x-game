@@ -9,6 +9,8 @@ void IntroduceStory()
     std::cout << "Entering TripleX\n";
     std::cout << "================\n";
 
+    throw syntax error
+
     std::cout << "You hurry up, and move into the data center room.\n";
     std::cout << "Your heart is racing, and the adrenaline is racing through "
                  "your veins."
