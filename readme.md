@@ -6,7 +6,7 @@
 > Prerequisite: [Docker](https://www.docker.com/) & [Docker Compose](https://docs.docker.com/compose/)
 
 ```bash
-docker-compose run --rm start
+docker-compose run start
 docker-compose down #  to clean up
 ```
 
