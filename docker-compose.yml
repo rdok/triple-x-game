@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+
+  start:
+    image: gcc:9
+    volumes: [ .:/app ]
+    working_dir: /app
+    command: >
+      bash -c "
+      g++ TripleX.cpp -o TripleX.out
+      && ./TripleX.out"
+
+  compile:
+    image: gcc:9
+    volumes: [ .:/app ]
+    working_dir: /app
+    command: bash -c "g++ TripleX.cpp -o TripleX.out"
