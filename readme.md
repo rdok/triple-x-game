@@ -9,7 +9,9 @@
 docker-compose run --rm start
 docker-compose down #  to clean up
 ```
-![social-preview](./social-preview.jpg "Social Preview")
+
+https://user-images.githubusercontent.com/4212119/137528197-14a88be0-47c6-4b05-b5ef-0d7ec388f0b2.mp4
+
 
 ### High Specs
 - Simple number puzzle game
