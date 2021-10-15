@@ -196,17 +196,17 @@ void generateMatrix(int Difficulty)
 int main()
 {
     srand(time(NULL));
-    int MaxDifficulty = 3;
-    int Difficulty = 1;
+    int maxDifficulty = 3;
+    int difficulty = 1;
 
     IntroduceStory();
 
-    while (Difficulty <= MaxDifficulty)
+    while (difficulty <= maxDifficulty)
     {
-        generateMatrix(Difficulty);
+        generateMatrix(difficulty);
 
-        if (AttemptCodeHack(Difficulty))
-            Difficulty++;
+        if (AttemptCodeHack(difficulty))
+            difficulty++;
 
         std::cin.clear();
         std::cin.ignore();
