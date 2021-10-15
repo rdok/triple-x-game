@@ -1,8 +1,8 @@
 #include <iostream>
 #include <ctime>
 
-int FirstCode, SecondCode, ThirdCode, CodeSum, CodeProduct, PlayerResponse1,
-    PlayerResponse2, PlayerResponse3, PlayerResponseSum, PlayerResponseProduct;
+int first_code, second_code, third_code, code_sum, code_product, player_response_alpha,
+    player_response_beta, player_response_gamma, player_response_sum, player_response_product;
 
 void IntroduceStory()
 {
@@ -148,9 +148,9 @@ void PrintInValidResponseMessage()
 
 bool CheckCode(int Difficulty)
 {
-    bool PlayerResponseIsValid = PlayerResponseProduct == CodeProduct;
+    bool PlayerResponseIsValid = player_response_product == code_product;
 
-    PlayerResponseIsValid &= PlayerResponseSum == CodeSum;
+    PlayerResponseIsValid &= player_response_sum == code_sum;
 
     if (PlayerResponseIsValid)
     {
@@ -167,30 +167,30 @@ bool AttemptCodeHack(int Difficulty)
     std::cout << "Code Review\n";
     std::cout << "===========\n";
     std::cout << "✖ There are 3 numbers in the code\n";
-    std::cout << "✖ They add up to: " << CodeSum << "\n";
-    std::cout << "✖ The codes multiply to: " << CodeProduct << "\n\n";
+    std::cout << "✖ They add up to: " << code_sum << "\n";
+    std::cout << "✖ The codes multiply to: " << code_product << "\n\n";
 
     std::cout << "Enter the three codes:\n";
-    std::cin >> PlayerResponse1 >> PlayerResponse2 >> PlayerResponse3;
-    std::cout << "You responded with: " << PlayerResponse1 << ", ";
-    std::cout << PlayerResponse2 << ", and " << PlayerResponse3 << "\n\n";
+    std::cin >> player_response_alpha >> player_response_beta >> player_response_gamma;
+    std::cout << "You responded with: " << player_response_alpha << ", ";
+    std::cout << player_response_beta << ", and " << player_response_gamma << "\n\n";
 
-    PlayerResponseProduct = PlayerResponse1 * PlayerResponse2 * PlayerResponse3;
-    PlayerResponseSum = PlayerResponse1 + PlayerResponse2 + PlayerResponse3;
+    player_response_product = player_response_alpha * player_response_beta * player_response_gamma;
+    player_response_sum = player_response_alpha + player_response_beta + player_response_gamma;
 
-    std::cout << "Product: " << PlayerResponseProduct << "\n";
-    std::cout << "Sum: " << PlayerResponseSum << "\n\n";
+    std::cout << "Product: " << player_response_product << "\n";
+    std::cout << "Sum: " << player_response_sum << "\n\n";
 
     return CheckCode(Difficulty);
 }
 
 void generateMatrix(int Difficulty)
 {
-    FirstCode = rand() % Difficulty + Difficulty;
-    SecondCode = rand() % Difficulty + Difficulty;
-    ThirdCode = rand() % Difficulty + Difficulty;
-    CodeSum = FirstCode + SecondCode + ThirdCode;
-    CodeProduct = FirstCode * SecondCode * ThirdCode;
+    first_code = rand() % Difficulty + Difficulty;
+    second_code = rand() % Difficulty + Difficulty;
+    third_code = rand() % Difficulty + Difficulty;
+    code_sum = first_code + second_code + third_code;
+    code_product = first_code * second_code * third_code;
 }
 
 int main()
