@@ -148,11 +148,11 @@ void PrintInValidResponseMessage()
 
 bool CheckCode(int Difficulty)
 {
-    bool PlayerResponseIsValid = PlayerResponseProduct == CodeProduct;
+    bool bPlayerResponseIsValid = PlayerResponseProduct == CodeProduct;
 
-    PlayerResponseIsValid &= PlayerResponseSum == CodeSum;
+    bPlayerResponseIsValid &= PlayerResponseSum == CodeSum;
 
-    if (PlayerResponseIsValid)
+    if (bPlayerResponseIsValid)
     {
         PrintValidResponseMessage(Difficulty);
         return true;
