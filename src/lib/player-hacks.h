@@ -3,8 +3,8 @@
 
 #endif //TRIPLE_X_GAME_PROMPT_PLAYER_HACK_H
 
-std::tuple<int, int, int> PromptPlayerHack(int MatrixSum, int MatrixProduct) {
-    int PlayerAlphaCode, PlayerBetaCode, PlayerGammaCode;
+std::tuple<int, int, int> PromptHack(int MatrixSum, int MatrixProduct) {
+    int alpha_code, beta_code, gamma_code;
 
     std::cout << "Code Review\n";
     std::cout << "===========\n";
@@ -13,14 +13,14 @@ std::tuple<int, int, int> PromptPlayerHack(int MatrixSum, int MatrixProduct) {
     std::cout << "✖ The codes multiply to: " << MatrixProduct << "\n\n";
 
     std::cout << "Enter the three codes:\n";
-    std::cin >> PlayerAlphaCode >> PlayerBetaCode >> PlayerGammaCode;
-    std::cout << "You responded with: " << PlayerAlphaCode << ", ";
-    std::cout << PlayerBetaCode << ", and " << PlayerGammaCode << "\n\n";
+    std::cin >> alpha_code >> beta_code >> gamma_code;
+    std::cout << "You responded with: " << alpha_code << ", ";
+    std::cout << beta_code << ", and " << gamma_code << "\n\n";
 
-    return std::make_tuple(PlayerAlphaCode, PlayerBetaCode, PlayerGammaCode);
+    return std::make_tuple(alpha_code, beta_code, gamma_code);
 }
 
-bool HasValidPlayerHackAttempt(int alpha_code, int beta_code, int gamma_code, int matrix_sum, int matrix_product) {
+bool HasValidHackAttempt(int alpha_code, int beta_code, int gamma_code, int matrix_sum, int matrix_product) {
     const int product = alpha_code * beta_code * gamma_code;
     const int sum = alpha_code + beta_code + gamma_code;
 
