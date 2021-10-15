@@ -17,8 +17,8 @@ void IntroduceStory() {
     std::cout << "Finally, with your trusty Arch Linux OS, you're ready.\n\n";
 }
 
-void PrintValidResponseMessage(int Difficulty) {
-    if (Difficulty == 1) {
+void PrintValidResponseMessage(int difficulty) {
+    if (difficulty == 1) {
         std::cout << R"(
  ______________
 ||            ||
@@ -38,7 +38,7 @@ void PrintValidResponseMessage(int Difficulty) {
         return;
     }
 
-    if (Difficulty == 2) {
+    if (difficulty == 2) {
         std::cout << R"(
 Fight Bugs                      |     |
                                 \\_V_//
@@ -156,49 +156,49 @@ std::tuple<int, int, int> PromptPlayerHack(int MatrixSum, int MatrixProduct) {
     return std::make_tuple(PlayerAlphaCode, PlayerBetaCode, PlayerGammaCode);
 }
 
-bool HasValidPlayerHackAttempt(int AlphaCode, int BetaCode, int GammaCode, int MatrixSum, int MatrixProduct) {
-    const int Product = AlphaCode * BetaCode * GammaCode;
-    const int Sum = AlphaCode + BetaCode + GammaCode;
+bool HasValidPlayerHackAttempt(int alpha_code, int beta_code, int gamma_code, int matrix_sum, int matrix_product) {
+    const int product = alpha_code * beta_code * gamma_code;
+    const int sum = alpha_code + beta_code + gamma_code;
 
-    std::cout << "Product: " << Product << "\n";
-    std::cout << "Sum: " << Sum << "\n\n";
+    std::cout << "product: " << product << "\n";
+    std::cout << "sum: " << sum << "\n\n";
 
-    bool bHasValidProduct = Product == MatrixProduct;
-    bool bHasValidSum = Sum == MatrixSum;
+    bool has_valid_product = product == matrix_product;
+    bool b_has_valid_sum = sum == matrix_sum;
 
-    return bHasValidProduct && bHasValidSum;
+    return has_valid_product && b_has_valid_sum;
 }
 
 std::tuple<int, int> generateMatrix(int Difficulty) {
-    const int FirstCode = rand() % Difficulty + Difficulty;
-    const int SecondCode = rand() % Difficulty + Difficulty;
-    const int ThirdCode = rand() % Difficulty + Difficulty;
+    const int alpha_code = rand() % Difficulty + Difficulty;
+    const int beta_code = rand() % Difficulty + Difficulty;
+    const int gemma_code = rand() % Difficulty + Difficulty;
 
-    const int MatrixSum = FirstCode + SecondCode + ThirdCode;
-    const int MatrixProduct = FirstCode * SecondCode * ThirdCode;
+    const int matrix_sum = alpha_code + beta_code + gemma_code;
+    const int matrix_product = alpha_code * beta_code * gemma_code;
 
-    return std::make_tuple(MatrixSum, MatrixProduct);
+    return std::make_tuple(matrix_sum, matrix_product);
 }
 
 int main() {
     srand(time(nullptr));
-    int MaxDifficulty = 3;
-    int Difficulty = 1;
-    int MatrixSum, MatrixProduct, PlayerAlphaCode, PlayerBetaCode, PlayerGammaCode;
-    bool bHasValidPlayerHackAttempt;
+    int max_difficulty = 3;
+    int difficulty = 1;
+    int matrix_sum, matrix_product, player_alpha_code, player_beta_code, player_gamma_code;
+    bool has_valid_player_hack_attempt;
 
     IntroduceStory();
 
-    while (Difficulty <= MaxDifficulty) {
-        std::tie(MatrixSum, MatrixProduct) = generateMatrix(Difficulty);
-        std::tie(PlayerAlphaCode, PlayerBetaCode, PlayerGammaCode) = PromptPlayerHack(MatrixSum, MatrixProduct);
+    while (difficulty <= max_difficulty) {
+        std::tie(matrix_sum, matrix_product) = generateMatrix(difficulty);
+        std::tie(player_alpha_code, player_beta_code, player_gamma_code) = PromptPlayerHack(matrix_sum, matrix_product);
 
-        bHasValidPlayerHackAttempt =
-                HasValidPlayerHackAttempt(PlayerAlphaCode, PlayerBetaCode, PlayerGammaCode, MatrixSum, MatrixProduct);
+        has_valid_player_hack_attempt =
+                HasValidPlayerHackAttempt(player_alpha_code, player_beta_code, player_gamma_code, matrix_sum, matrix_product);
 
-        if (bHasValidPlayerHackAttempt) {
-            Difficulty++;
-            PrintValidResponseMessage(Difficulty);
+        if (has_valid_player_hack_attempt) {
+            difficulty++;
+            PrintValidResponseMessage(difficulty);
         } else {
             PrintInValidResponseMessage();
         }
