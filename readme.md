@@ -1,12 +1,16 @@
 # TripleX
 
-[![Build Status](https://jenkins.rdok.dev/buildStatus/icon?job=triple-x-game)](https://jenkins.rdok.dev/view/Training/job/triple-x-game/)
+[![CI][ci_badge]][ci_link]
 
 ### Development
-Prerequisite: [Docker](https://www.docker.com/)  
-Windows - Git bash `./exec.sh`
+> Prerequisite: [Docker](https://www.docker.com/) & [Docker Compose](https://docs.docker.com/compose/)
 
-![social-preview](./social-preview.jpg "Social Preview")
+```bash
+docker-compose run --rm start
+docker-compose down #  to clean up
+```
+
+https://user-images.githubusercontent.com/4212119/137528197-14a88be0-47c6-4b05-b5ef-0d7ec388f0b2.mp4
 
 
 ### High Specs
@@ -15,3 +19,7 @@ Windows - Git bash `./exec.sh`
 - Need to ind a valid combination of codes
 - Starts pretty easy, becomes much harder
 
+
+
+[ci_badge]: https://github.com/rdok/triple-x-game/actions/workflows/ci.yml/badge.svg
+[ci_link]: https://github.com/rdok/triple-x-game/actions/workflows/ci.yml
