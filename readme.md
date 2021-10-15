@@ -10,7 +10,10 @@ docker-compose run --rm start
 docker-compose down #  to clean up
 ```
 
-https://user-images.githubusercontent.com/4212119/137528197-14a88be0-47c6-4b05-b5ef-0d7ec388f0b2.mp4
+
+
+https://user-images.githubusercontent.com/4212119/137528363-cdc0ebde-b70b-4377-9a01-53b1862967a4.mp4
+
 
 
 ### High Specs
