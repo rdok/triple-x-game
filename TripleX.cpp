@@ -196,12 +196,12 @@ void generateMatrix(int Difficulty)
 int main()
 {
     srand(time(NULL));
-    int maxDifficulty = 3;
+    int max_difficulty = 3;
     int difficulty = 1;
 
     IntroduceStory();
 
-    while (difficulty <= maxDifficulty)
+    while (difficulty <= max_difficulty)
     {
         generateMatrix(difficulty);
 
