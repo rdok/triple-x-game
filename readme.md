@@ -1,13 +1,15 @@
 # TripleX
 
-[![Build Status](https://jenkins.rdok.dev/buildStatus/icon?job=triple-x-game)](https://jenkins.rdok.dev/view/Training/job/triple-x-game/)
+[![CI][ci_badge]][ci_link]
 
 ### Development
-Prerequisite: [Docker](https://www.docker.com/)  
-Windows - Git bash `./exec.sh`
+> Prerequisite: [Docker](https://www.docker.com/) & [Docker Compose](https://docs.docker.com/compose/)
 
+```bash
+docker-compose run --rm start
+docker-compose down #  to clean up
+```
 ![social-preview](./social-preview.jpg "Social Preview")
-
 
 ### High Specs
 - Simple number puzzle game
@@ -15,3 +17,7 @@ Windows - Git bash `./exec.sh`
 - Need to ind a valid combination of codes
 - Starts pretty easy, becomes much harder
 
+
+
+[ci_badge]: https://github.com/rdok/triple-x-game/actions/workflows/ci.yml/badge.svg
+[ci_link]: https://github.com/rdok/triple-x-game/actions/workflows/ci.yml
