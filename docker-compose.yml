@@ -7,11 +7,11 @@ services:
     working_dir: /app
     command: >
       sh -c "
-      g++ TripleX.cpp -o TripleX.out
+      g++ src/main.cpp -o TripleX.out
       && ./TripleX.out"
 
   compile:
     image: rdok/gpp:alpine3.12
     volumes: [ .:/app ]
     working_dir: /app
-    command: sh -c "g++ TripleX.cpp -o TripleX.out"
+    command: sh -c "g++ src/main.cpp -o TripleX.out"
