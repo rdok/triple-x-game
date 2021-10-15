@@ -50,3 +50,5 @@
 *.app
 
 # End of https://www.gitignore.io/api/c++
+
+cmake-build-debug/

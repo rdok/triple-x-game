@@ -1,11 +1,8 @@
 #include <iostream>
 #include <ctime>
+#include <tuple>
 
-int FirstCode, SecondCode, ThirdCode, CodeSum, CodeProduct, PlayerResponse1,
-    PlayerResponse2, PlayerResponse3, PlayerResponseSum, PlayerResponseProduct;
-
-void IntroduceStory()
-{
+void IntroduceStory() {
     std::cout << "Entering TripleX\n";
     std::cout << "================\n";
 
@@ -20,10 +17,8 @@ void IntroduceStory()
     std::cout << "Finally, with your trusty Arch Linux OS, you're ready.\n\n";
 }
 
-void PrintValidResponseMessage(int Difficulty)
-{
-    if (Difficulty == 1)
-    {
+void PrintValidResponseMessage(int difficulty) {
+    if (difficulty == 1) {
         std::cout << R"(
  ______________
 ||            ||
@@ -43,8 +38,7 @@ void PrintValidResponseMessage(int Difficulty)
         return;
     }
 
-    if (Difficulty == 2)
-    {
+    if (difficulty == 2) {
         std::cout << R"(
 Fight Bugs                      |     |
                                 \\_V_//
@@ -113,8 +107,7 @@ Fight Bugs                      |     |
     }
 }
 
-void PrintInValidResponseMessage()
-{
+void PrintInValidResponseMessage() {
     std::cout << R"(
 ███████▓█████▓▓╬╬╬╬╬╬╬╬▓███▓╬╬╬╬╬╬╬▓╬╬▓█
 ████▓▓▓▓╬╬▓█████╬╬╬╬╬╬███▓╬╬╬╬╬╬╬╬╬╬╬╬╬█
@@ -146,67 +139,69 @@ void PrintInValidResponseMessage()
     std::cout << "That didn't work. You decide to give it another go.\n\n";
 }
 
-bool CheckCode(int Difficulty)
-{
-    bool PlayerResponseIsValid = PlayerResponseProduct == CodeProduct;
+std::tuple<int, int, int> PromptPlayerHack(int MatrixSum, int MatrixProduct) {
+    int PlayerAlphaCode, PlayerBetaCode, PlayerGammaCode;
 
-    PlayerResponseIsValid &= PlayerResponseSum == CodeSum;
-
-    if (PlayerResponseIsValid)
-    {
-        PrintValidResponseMessage(Difficulty);
-        return true;
-    }
-
-    PrintInValidResponseMessage();
-    return false;
-}
-
-bool AttemptCodeHack(int Difficulty)
-{
     std::cout << "Code Review\n";
     std::cout << "===========\n";
     std::cout << "✖ There are 3 numbers in the code\n";
-    std::cout << "✖ They add up to: " << CodeSum << "\n";
-    std::cout << "✖ The codes multiply to: " << CodeProduct << "\n\n";
+    std::cout << "✖ They add up to: " << MatrixSum << "\n";
+    std::cout << "✖ The codes multiply to: " << MatrixProduct << "\n\n";
 
     std::cout << "Enter the three codes:\n";
-    std::cin >> PlayerResponse1 >> PlayerResponse2 >> PlayerResponse3;
-    std::cout << "You responded with: " << PlayerResponse1 << ", ";
-    std::cout << PlayerResponse2 << ", and " << PlayerResponse3 << "\n\n";
+    std::cin >> PlayerAlphaCode >> PlayerBetaCode >> PlayerGammaCode;
+    std::cout << "You responded with: " << PlayerAlphaCode << ", ";
+    std::cout << PlayerBetaCode << ", and " << PlayerGammaCode << "\n\n";
 
-    PlayerResponseProduct = PlayerResponse1 * PlayerResponse2 * PlayerResponse3;
-    PlayerResponseSum = PlayerResponse1 + PlayerResponse2 + PlayerResponse3;
-
-    std::cout << "Product: " << PlayerResponseProduct << "\n";
-    std::cout << "Sum: " << PlayerResponseSum << "\n\n";
-
-    return CheckCode(Difficulty);
+    return std::make_tuple(PlayerAlphaCode, PlayerBetaCode, PlayerGammaCode);
 }
 
-void generateMatrix(int Difficulty)
-{
-    FirstCode = rand() % Difficulty + Difficulty;
-    SecondCode = rand() % Difficulty + Difficulty;
-    ThirdCode = rand() % Difficulty + Difficulty;
-    CodeSum = FirstCode + SecondCode + ThirdCode;
-    CodeProduct = FirstCode * SecondCode * ThirdCode;
+bool HasValidPlayerHackAttempt(int alpha_code, int beta_code, int gamma_code, int matrix_sum, int matrix_product) {
+    const int product = alpha_code * beta_code * gamma_code;
+    const int sum = alpha_code + beta_code + gamma_code;
+
+    std::cout << "product: " << product << "\n";
+    std::cout << "sum: " << sum << "\n\n";
+
+    bool has_valid_product = product == matrix_product;
+    bool b_has_valid_sum = sum == matrix_sum;
+
+    return has_valid_product && b_has_valid_sum;
 }
 
-int main()
-{
-    srand(time(NULL));
-    int MaxDifficulty = 3;
-    int Difficulty = 1;
+std::tuple<int, int> generateMatrix(int Difficulty) {
+    const int alpha_code = rand() % Difficulty + Difficulty;
+    const int beta_code = rand() % Difficulty + Difficulty;
+    const int gemma_code = rand() % Difficulty + Difficulty;
+
+    const int matrix_sum = alpha_code + beta_code + gemma_code;
+    const int matrix_product = alpha_code * beta_code * gemma_code;
+
+    return std::make_tuple(matrix_sum, matrix_product);
+}
+
+int main() {
+    srand(time(nullptr));
+    int max_difficulty = 3;
+    int difficulty = 1;
+    int matrix_sum, matrix_product, player_alpha_code, player_beta_code, player_gamma_code;
+    bool has_valid_player_hack_attempt;
 
     IntroduceStory();
 
-    while (Difficulty <= MaxDifficulty)
-    {
-        generateMatrix(Difficulty);
+    while (difficulty <= max_difficulty) {
+        std::tie(matrix_sum, matrix_product) = generateMatrix(difficulty);
+        std::tie(player_alpha_code, player_beta_code, player_gamma_code) = PromptPlayerHack(matrix_sum, matrix_product);
 
-        if (AttemptCodeHack(Difficulty))
-            Difficulty++;
+        has_valid_player_hack_attempt =
+                HasValidPlayerHackAttempt(player_alpha_code, player_beta_code, player_gamma_code, matrix_sum, matrix_product);
+
+        if (has_valid_player_hack_attempt) {
+            difficulty++;
+            PrintValidResponseMessage(difficulty);
+        } else {
+            PrintInValidResponseMessage();
+        }
 
         std::cin.clear();
         std::cin.ignore();
