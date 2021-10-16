@@ -10,22 +10,22 @@
 int main() {
     srand(time(nullptr));
     int max_difficulty = 3;
-    int difficulty = 1;
+    int difficulty_multiplier = 1;
     int matrix_sum, matrix_product, alpha_code, beta_code, gamma_code;
     bool has_valid_hack_attempt;
 
     PrintStoryIntro();
 
-    while (difficulty <= max_difficulty) {
-        std::tie(matrix_sum, matrix_product) = generateMatrix(difficulty);
+    while (difficulty_multiplier <= max_difficulty) {
+        std::tie(matrix_sum, matrix_product) = generateMatrix(difficulty_multiplier);
         PromptHack(matrix_sum, matrix_product);
 
         std::tie(alpha_code, beta_code, gamma_code) = GetPlayerHack();
         has_valid_hack_attempt = HasValidHackAttempt(alpha_code, beta_code, gamma_code, matrix_sum, matrix_product);
 
         if (has_valid_hack_attempt) {
-            difficulty++;
-            PrintHackSuccessMessage(difficulty);
+            difficulty_multiplier++;
+            PrintHackSuccessMessage(difficulty_multiplier);
         } else {
             PrintHackFailedMessage();
         }
