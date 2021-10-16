@@ -1,17 +1,8 @@
 version: "3.9"
 services:
 
-  start:
+  gcc:
     image: rdok/gpp:alpine3.12
-    volumes: [ .:/app ]
+    volumes: [ ./src:/app ]
     working_dir: /app
-    command: >
-      sh -c "
-      g++ src/main.cpp -o TripleX.out
-      && ./TripleX.out"
-
-  compile:
-    image: rdok/gpp:alpine3.12
-    volumes: [ .:/app ]
-    working_dir: /app
-    command: sh -c "g++ src/main.cpp -o TripleX.out"
+    tty: true # Keep container alive
