@@ -6,7 +6,7 @@
 > Prerequisite: [Docker](https://www.docker.com/) & [Docker Compose](https://docs.docker.com/compose/)
 
 ```bash
-docker-compose up -d  # Setup a running container with g++
+docker-compose up -d  # Setup a lightweight (Alpine) running container with g++
 
 docker-compose exec gcc sh -c '\
   g++ main.cpp -o TripleX.out \
