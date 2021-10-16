@@ -6,7 +6,13 @@
 > Prerequisite: [Docker](https://www.docker.com/) & [Docker Compose](https://docs.docker.com/compose/)
 
 ```bash
-docker-compose run start
+docker-compose up -d  # Setup a running container with g++
+
+docker-compose exec gcc sh -c '\
+  g++ main.cpp -o TripleX.out \
+  && ./TripleX.out
+'
+
 docker-compose down #  to clean up
 ```
 
